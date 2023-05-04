@@ -54,16 +54,14 @@
 </template>
 
 <script setup>
-// const client = useSupabaseClient()
-// const user = useSupabaseUser()
+const client = useSupabaseClient()
+const user = useSupabaseUser()
 
-import { client } from "process"
-
-// watchEffect(() => {
-//     if (user.value) {
-//         return navigateTo('/')
-//     }
-// })
+watchEffect(() => {
+    if (user.value) {
+        return navigateTo('/')
+    }
+})
 
 const login = async (prov) => {
     const { data, error } = await client.auth.signInWithOAuth({
