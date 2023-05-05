@@ -96,7 +96,7 @@ let isWorking = ref(false)
 let error = ref(null)
 
 watchEffect(async () => {
-    currentAddress.value = await useFetch(`/api/prisma/get-all-address-by-user/${user.value.id}`)
+    currentAddress.value = await useFetch(`/api/prisma/get-address-by-user/${user.value.id}`)
 
     if (currentAddress.value.data) {
         contactName.value = currentAddress.value.data.name
@@ -164,7 +164,7 @@ const submit = async () => {
         return navigateTo('/checkout')
     }
 
-    await useFetch('/api/prisma/add-address/', {
+    await useFetch(`/api/prisma/add-address/`, {
         method: 'POST',
         body: {
             userId: user.value.id,
